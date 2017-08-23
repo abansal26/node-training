@@ -1,18 +1,18 @@
 // Problem 1: Complete the secondLargest function which takes in an array of numbers in input and return the second biggest number in the array. (without using sort)?
 function secondLargest(array) {
-  var p1, p2, length;
+  var largest, secondlargest, length;
 
   length = array.length;
-  p1 = p2 = 0;
+  largest = secondlargest = 0;
 
-  for (i = 0; i < length; i++) {
-    if (array[i] > p1) {
-      p2 = p1;
-      p1 = array[i];
-    } else if (array[i] > p2) {
-      p2 = array[i];
+  for (iteration = 0; iteration < length; iteration++) {
+    if (array[iteration] > largest) {
+      secondlargest = largest;
+      largest = array[iteration];
+    } else if (array[iteration] > secondlargest) {
+      secondlargest = array[iteration];
     }
   }
 
-  return p2;
+  return secondlargest;
 }

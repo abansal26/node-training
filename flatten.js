@@ -2,14 +2,14 @@
 function flatten(unflatObject) {
   var output = {};
 
-  for (var i in unflatObject) {
-    if (typeof unflatObject[i] == "object") {
-      var fo = flatten(unflatObject[i]);
+  for (var iteration in unflatObject) {
+    if (typeof unflatObject[iteration] == "object") {
+      var fo = flatten(unflatObject[iteration]);
 
-      for (var j in fo) {
-        output[i + "." + j] = fo[j];
+      for (var count in fo) {
+        output[iteration + "." + count] = fo[count];
       }
-    } else output[i] = unflatObject[i];
+    } else output[iteration] = unflatObject[iteration];
   }
 
   return output;

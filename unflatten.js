@@ -6,16 +6,16 @@ function unflatten(flatObject) {
     var substring = key.split(".");
     var temp = result;
 
-    for (var i = 0; i < substring.length - 1; i++) {
-      if (!(substring[i] in temp)) {
-        if (isFinite(substring[i + 1])) {
-          temp[substring[i]] = [];
+    for (var iteration = 0; iteration < substring.length - 1; iteration++) {
+      if (!(substring[iteration] in temp)) {
+        if (isFinite(substring[iteration + 1])) {
+          temp[substring[iteration]] = [];
         } else {
-          temp[substring[i]] = {};
+          temp[substring[iteration]] = {};
         }
       }
 
-      temp = temp[substring[i]];
+      temp = temp[substring[iteration]];
     }
 
     temp[substring[substring.length - 1]] = flatObject[key];
@@ -23,4 +23,3 @@ function unflatten(flatObject) {
 
   return result;
 }
-

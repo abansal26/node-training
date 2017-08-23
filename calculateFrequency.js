@@ -5,11 +5,11 @@ function calculateFrequency(string) {
   length = string.length;
   var output = {};
 
-  for (var i = 0; i < length; i++) {
-    var r = string.charAt(i);
+  for (var iteration = 0; iteration < length; iteration++) {
+    var character = string.charAt(iteration);
 
-    if (r >= "a" && r <= "z") {
-      output[r] = (output[r] || 0) + 1;
+    if (character >= "a" && character <= "z") {
+      output[character] = (output[character] || 0) + 1;
     }
   }
 
