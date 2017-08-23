@@ -4,10 +4,10 @@ function flatten(unflatObject) {
 
   for (var iteration in unflatObject) {
     if (typeof unflatObject[iteration] == "object") {
-      var fo = flatten(unflatObject[iteration]);
+      var flattenObject = flatten(unflatObject[iteration]);
 
-      for (var count in fo) {
-        output[iteration + "." + count] = fo[count];
+      for (var count in flattenObject) {
+        output[iteration + "." + count] = flattenObject[count];
       }
     } else output[iteration] = unflatObject[iteration];
   }
