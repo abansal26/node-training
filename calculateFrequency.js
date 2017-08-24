@@ -2,14 +2,11 @@
 function calculateFrequency(string) {
   var length = string.length;
   var output = {};
-
-  for (var iteration = 0; iteration < length; iteration++) {
-    var character = string.charAt(iteration);
-
-    if (character >= "a" && character <= "z") {
+  for (var index = 0;index < length; index++) {
+    var character = string.charAt(index);
+    if ((character >= "a" && character <= "z") || (character >= 'A' && character <= 'Z')) {
       output[character] = (output[character] || 0) + 1;
     }
   }
-
   return output;
 }
