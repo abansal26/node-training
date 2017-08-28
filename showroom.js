@@ -2,7 +2,7 @@
 var Vehicle = function(data) {
   this.name = data.name;
   this.model = data.model;
-  this.makingyear = data.makingyear;
+  this.makingYear = data.makingYear;
   this.color = data.color;
 };
 
@@ -14,7 +14,7 @@ var SUV = function(data) {
   this.avg = "11";
 };
 
-SUV.prototype = Vehicle.prototype;
+//SUV.prototype = Vehicle.prototype;
 
 var Sedan = function(data) {
   Vehicle.call(this, data);
@@ -23,7 +23,7 @@ var Sedan = function(data) {
   this.avg = "15";
 };
 
-Sedan.prototype = Vehicle.prototype;
+//Sedan.prototype = Vehicle.prototype;
 
 var Hatchback = function(data) {
   Vehicle.call(this, data);
@@ -32,12 +32,12 @@ var Hatchback = function(data) {
   this.avg = "18";
 };
 
-Hatchback.prototype = Vehicle.prototype;
+//Hatchback.prototype = Vehicle.prototype;
 
 var alto = {
   name: "Alto",
   model: "lxi",
-  makingyear: "2009",
+  makingYear: "2009",
   color: "Grey",
   engineinback: "No"
 };
@@ -48,7 +48,7 @@ console.log(Alto);
 var swiftdzire = {
   name: "Swift Dzire",
   model: "vxi",
-  makingyear: "2010",
+  makingYear: "2010",
   color: "Silver",
   airbag: "No"
 };
@@ -59,7 +59,7 @@ console.log(Swiftdzire);
 var scorpio = {
   name: "Scorpio",
   model: "Storm",
-  makingyear: "2009",
+  makingYear: "2009",
   color: "Black",
   airbag: "Yes",
   foglight: "Yes"
