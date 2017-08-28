@@ -2,7 +2,7 @@
 var Vehicle = function(data) {
   this.name = data.name;
   this.model = data.model;
-  this.make = data.make;
+  this.makingyear = data.makingyear;
   this.color = data.color;
 };
 
@@ -37,7 +37,7 @@ Hatchback.prototype = Vehicle.prototype;
 var alto = {
   name: "Alto",
   model: "lxi",
-  make: "2009",
+  makingyear: "2009",
   color: "Grey",
   engineinback: "No"
 };
@@ -48,7 +48,7 @@ console.log(Alto);
 var swiftdzire = {
   name: "Swift Dzire",
   model: "vxi",
-  make: "2010",
+  makingyear: "2010",
   color: "Silver",
   airbag: "No"
 };
@@ -59,7 +59,7 @@ console.log(Swiftdzire);
 var scorpio = {
   name: "Scorpio",
   model: "Storm",
-  make: "2009",
+  makingyear: "2009",
   color: "Black",
   airbag: "Yes",
   foglight: "Yes"
