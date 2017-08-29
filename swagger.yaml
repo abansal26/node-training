@@ -1,0 +1,308 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: SWAPI The Star Wars API
+  description: A documentation of various resorces of SWAPI
+schemes:
+  - https
+host: swapi.co
+basePath: /api/
+tags:
+  - name: Starships
+    description: Access to descriptions of starships in starwars
+  - name: Vehicles
+    description: Access to description of vehicles in starwars
+paths:
+  /starships/:
+    get:
+      tags:
+        - Starships
+      summary: Get the descriptions of all the ships
+      description: Returns a list containing descriptions of all the ship
+      responses:
+        '200':
+          description: A list of descriptions of starships
+          schema:
+            $ref: '#/definitions/starships'
+        '404':
+          description: '{detail : Not found} '
+  '/starships/{starshipID}':
+    get:
+      tags:
+        - Starships
+      summary: Get ship descriptions by its ID
+      description: Returns a list containing Description of the ship
+      parameters:
+        - name: starshipID
+          in: path
+          description: ID of ship whose description is required
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: A list of descriptions of starships
+          schema:
+            $ref: '#/definitions/starship'
+        '404':
+          description: '{detail : Not found} '
+  /starships/schema:
+    get:
+      tags:
+        - Starships
+      summary: Get description/schema of starship schema
+      description: Get schema of api responses
+      responses:
+        '200':
+          description: Get schema of the responses of the API
+          schema:
+            $ref: '#/definitions/schema'
+  /vehicles/:
+    get:
+      tags:
+        - Vehicles
+      summary: Get the descriptions of all the ships
+      description: Returns a list containing descriptions of all the ship
+      responses:
+        '200':
+          description: A list of descriptions of starships
+          schema:
+            $ref: '#/definitions/vehicles'
+        '404':
+          description: '{detail : Not found} '
+  '/vehicles/{vehicleID}':
+    get:
+      tags:
+        - Vehicles
+      summary: Get ship descriptions by its ID
+      description: Returns a list containing Description of the ship
+      parameters:
+        - name: vehicleID
+          in: path
+          description: ID of vehicle whose description is required
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: A list of descriptions of starships
+          schema:
+            $ref: '#/definitions/vehicle'
+        '404':
+          description: '{detail : Not found} '
+  /vehicles/schema:
+    get:
+      tags:
+        - Vehicles
+      summary: Get description/schema of starship schema
+      description: Get schema of api responses
+      responses:
+        '200':
+          description: Get schema of the responses of the API
+          schema:
+            $ref: '#/definitions/schema'
+definitions:
+  starship:
+    type: object
+    title: Starship
+    required:
+      - name
+      - model
+      - manufacturer
+      - cost_in_credits
+      - length
+      - max_atmosphering_speed
+      - crew
+      - passengers
+      - cargo_capacity
+      - consumables
+      - hyperdrive_rating
+      - MGLT
+      - starship_class
+      - pilots
+      - films
+      - created
+      - edited
+      - url
+    properties:
+      cost_in_credits:
+        type: string
+        description: 'The cost of this starship new, in galactic credits.'
+      pilots:
+        type: array
+        description: >-
+          An array of People URL Resources that this starship has been piloted
+          by.
+      hyperdrive_rating:
+        type: string
+        description: The class of this starships hyperdrive.
+      cargo_capacity:
+        type: string
+        description: The maximum number of kilograms that this starship can transport.
+      manufacturer:
+        type: string
+        description: The manufacturer of this starship. Comma seperated if more than one.
+      starship_class:
+        type: string
+        description: >-
+          The class of this starship, such as Starfighter or Deep Space Mobile
+          Battlestation.
+      model:
+        type: string
+        description: >-
+          The model or official name of this starship. Such as T-65 X-wing or
+          DS-1 Orbital Battle Station.
+      consumables:
+        type: string
+        description: >-
+          The maximum length of time that this starship can provide consumables
+          for its entire crew without having to resupply.
+      name:
+        type: string
+        description: 'The name of this starship. The common name, such as Death Star.'
+      edited:
+        description: the ISO 8601 date format of the time that this resource was edited.
+        type: string
+        format: date-time
+      crew:
+        type: string
+        description: The number of personnel needed to run or pilot this starship.
+      films:
+        type: array
+        description: An array of Film URL Resources that this starship has appeared in.
+      passengers:
+        type: string
+        description: The number of non-essential people this starship can transport.
+      MGLT:
+        type: string
+        description: >-
+          The Maximum number of Megalights this starship can travel in a
+          standard hour. A Megalight is a standard unit of distance and has
+          never been defined before within the Star Wars universe. This figure
+          is only really useful for measuring the difference in speed of
+          starships. We can assume it is similar to AU, the distance between our
+          Sun (Sol) and Earth.
+      max_atmosphering_speed:
+        type: string
+        description: >-
+          The maximum speed of this starship in atmosphere. n/a if this starship
+          is incapable of atmosphering flight.
+      created:
+        description: The ISO 8601 date format of the time that this resource was created.
+        type: string
+        format: date-time
+      url:
+        description: The hypermedia URL of this resource.
+        type: string
+        format: uri
+      length:
+        type: string
+        description: The length of this starship in meters.
+  starships:
+    type: object
+    title: Starships
+    items:
+      $ref: '#/definitions/starship'
+  schema:
+    type: object
+    title: Starship Schema
+    properties:
+      required:
+        type: array
+        description: The list of properties of starships schema.
+      properties:
+        type: object
+        description: >-
+         The list of Objects having properties of type and description which are both strings.
+      description:
+        type: string
+      title:
+        type: string
+      $schema:
+        type: string
+        format: uri
+      type:
+        type: string
+  vehicle:
+    type: object
+    title: Vehicle
+    required:
+      - name
+      - model
+      - manufacturer
+      - cost_in_credits
+      - length
+      - max_atmosphering_speed
+      - crew
+      - passengers
+      - cargo_capacity
+      - consumables
+      - vehicle_class
+      - pilots
+      - films
+      - created
+      - edited
+      - url
+    properties:
+      cost_in_credits:
+        type: string
+        description: 'The cost of this vehicle new, in galactic credits.'
+      pilots:
+        type: array
+        description: >-
+          An array of People URL Resources that this vehicle has been piloted
+          by.
+      vehicle_class:
+        type: string
+        description: 'The class of this vehicle, such as Wheeled.'
+      consumables:
+        type: string
+        description: >-
+          The maximum length of time that this vehicle can provide consumables
+          for its entire crew without having to resupply.
+      manufacturer:
+        type: string
+        description: The manufacturer of this vehicle. Comma seperated if more than one.
+      cargo_capacity:
+        type: string
+        description: The maximum number of kilograms that this vehicle can transport.
+      model:
+        type: string
+        description: >-
+          The model or official name of this vehicle. Such as All Terrain Attack
+          Transport.
+      name:
+        type: string
+        description: 'The name of this vehicle. The common name, such as Sand Crawler.'
+      edited:
+        description: the ISO 8601 date format of the time that this resource was edited.
+        type: string
+        format: date-time
+      crew:
+        type: string
+        description: The number of personnel needed to run or pilot this vehicle.
+      films:
+        type: array
+        description: An array of Film URL Resources that this vehicle has appeared in.
+      passengers:
+        type: string
+        description: The number of non-essential people this vehicle can transport.
+      max_atmosphering_speed:
+        type: string
+        description: The maximum speed of this vehicle in atmosphere.
+      created:
+        description: The ISO 8601 date format of the time that this resource was created.
+        type: string
+        format: date-time
+      url:
+        description: The hypermedia URL of this resource.
+        type: string
+        format: uri
+      length:
+        type: string
+        description: The length of this vehicle in meters.
+  vehicles:
+    type: object
+    title: Vehicles
+    items:
+      $ref: '#/definitions/vehicle'
