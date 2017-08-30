@@ -5,42 +5,10 @@ var flatten = require("./programs/flatten").flatten;
 var unflatten = require("./programs/unflatten").unflatten;
 const util = require("util");
 
-var input_array = [
-  21,
-  87,
-  91,
-  31,
-  97,
-  59,
-  8,
-  83,
-  27,
-  23,
-  76,
-  72,
-  31,
-  91,
-  65,
-  77,
-  84,
-  27,
-  56,
-  59
-];
+var input_array = [21,87,91,31,97,59,8,83,27,23,76,72,31,91,65,77,84,27,56,59];
 var input_string = "shali is running fast";
-var unflatObject = {
-  flatJSON: false,
-  i: { am: { not: { so: { flat: true, unflat: false } }, a: "tree" } },
-  dates: [{ day: 1 }, { day: 8947 }]
-};
-var flatObject = {
-  flatJSON: false,
-  "i.am.not.so.flat": true,
-  "i.am.not.so.unflat": false,
-  "i.am.a": "tree",
-  "dates.0.day": 1,
-  "dates.1.day": 8947
-};
+var unflatObject = {flatJSON: false,i: { am: { not: { so: { flat: true, unflat: false } }, a: "tree" } },dates: [{ day: 1 }, { day: 8947 }]};
+var flatObject = {flatJSON: false,"i.am.not.so.flat": true,"i.am.not.so.unflat": false,"i.am.a": "tree","dates.0.day": 1,"dates.1.day": 8947};
 
 http
   .createServer(function(req, res) {
