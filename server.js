@@ -1,7 +1,6 @@
 var http = require("http");
 var secondLargest = require("./programs/secondLargest").secondLargest;
-var calculateFrequency = require("./programs/calculateFrequency")
-  .calculateFrequency;
+var calculateFrequency = require("./programs/calculateFrequency").calculateFrequency;
 var flatten = require("./programs/flatten").flatten;
 var unflatten = require("./programs/unflatten").unflatten;
 const util = require("util");
