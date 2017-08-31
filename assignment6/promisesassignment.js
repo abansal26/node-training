@@ -1,7 +1,7 @@
 var fs = require("fs");
 
 var firstMethod = function() {
-  new Promise(function(resolve, reject) {
+  var promise = new Promise(function(resolve, reject) {
     fs.readFile("file1.txt", function(err, data) {
       if (err) {
         reject(err);
@@ -14,7 +14,7 @@ var firstMethod = function() {
 };
 
 var secondMethod = function(data) {
- new Promise(function(resolve, reject) {
+  var promise = new Promise(function(resolve, reject) {
     fs.appendFile("file2.txt", data, function(err) {
       if (err) {
         reject(err);
@@ -26,7 +26,7 @@ var secondMethod = function(data) {
 };
 
 var thirdMethod = function() {
-  new Promise(function(resolve, reject) {
+  var promise = new Promise(function(resolve, reject) {
     fs.readFile("file2.txt", function(err, data) {
       if (err) {
         reject(err);
@@ -39,7 +39,7 @@ var thirdMethod = function() {
 };
 
 var fourthMethod = function(data) {
-  new Promise(function(resolve, reject) {
+  var promise = new Promise(function(resolve, reject) {
     fs.appendFile("file3.txt", data, function(err) {
       if (err) {
         reject(err);
@@ -51,6 +51,6 @@ var fourthMethod = function(data) {
 };
 
 firstMethod()
-  .then(secondMethod)
-  .then(thirdMethod)
-  .then(fourthMethod);
+.then(secondMethod)
+.then(thirdMethod)
+.then(fourthMethod);
