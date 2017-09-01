@@ -1,14 +1,14 @@
 // Problem 3: Complete the flatten function that takes a JS Object, returns a JS Object in flatten format (compressed)
 function flatten(unflatObject) {
   var output = {};
-  for (var iteration in unflatObject) {
-    if (typeof unflatObject[iteration] == "object") {
-      var flattenObject = flatten(unflatObject[iteration]);
+  for (var property in unflatObject) {
+    if (typeof unflatObject[property] == "object") {
+      var flattenObject = flatten(unflatObject[property]);
       for (var count in flattenObject) {
-        output[iteration + "." + count] = flattenObject[count];
+        output[property + "." + count] = flattenObject[count];
       }
     } else 
-        output[iteration] = unflatObject[iteration];
+        output[property] = unflatObject[property];
   }
   return output;
 }
