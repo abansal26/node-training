@@ -1,55 +1,43 @@
 var fs = require("fs");
 
-var firstMethod = function() {
+var fileRead = function(fileName) {
   return new Promise(function(resolve, reject) {
-    fs.readFile("file1.txt", function(err, data) {
+    fs.readFile(fileName, function(err, data) {
       if (err) {
         return reject(err);
       }
-      console.log("first method completed");
+      console.log("reading "+ fileName +" completed");
       resolve(data);
     });
   });
 };
 
-var secondMethod = function(data) {
+var fileAppend = function(data , fileName) {
   return new Promise(function(resolve, reject) {
-    fs.appendFile("file2.txt", data, function(err) {
+    fs.appendFile(fileName, data, function(err) {
       if (err) {
         return reject(err);
       }
-      resolve(console.log("second method completed"));
+      resolve(console.log("Appending data in "+ fileName +" completed"));
     });
   });
 };
 
-var thirdMethod = function() {
+var fileWrite = function(data , fileName) {
   return new Promise(function(resolve, reject) {
-    fs.readFile("file2.txt", function(err, data) {
+    fs.writeFile(fileName, data, function(err) {
       if (err) {
         return reject(err);
       }
-      console.log("third method completed");
-      resolve(data);
+      resolve(console.log("writing data in "+ fileName +" completed"));
     });
   });
 };
 
-var fourthMethod = function(data) {
-  return new Promise(function(resolve, reject) {
-    fs.appendFile("file3.txt", data, function(err) {
-      if (err) {
-        return reject(err);
-      }
-      resolve(console.log("fourth method completed"));
-    });
-  });
-};
-
-firstMethod()
-  .then(secondMethod)
-  .then(thirdMethod)
-  .then(fourthMethod)
+fileRead("file1.txt")
+  .then(data => fileAppend(data , "file2.txt"))
+  .then(data => fileRead("file2.txt"))
+  .then(data => fileWrite(data , "file3.txt"))
   .catch(function(e) {
   console.log(e); 
   });
