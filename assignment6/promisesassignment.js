@@ -2,12 +2,12 @@ var fs = require("fs");
 
 var fileRead = function(fileName) {
   return new Promise(function(resolve, reject) {
-    fs.readFile(fileName, function(err, data) {
+    fs.readFile(fileName, function(err, response , body) {
       if (err) {
         return reject(err);
       }
       console.log("reading " + fileName + " completed");
-      resolve(data);
+      resolve(response);
     });
   });
 };
@@ -36,10 +36,10 @@ var fileWrite = function(data, fileName) {
   });
 };
 
-fileRead("file1.txt")
-  .then(data => fileAppend(data, "file2.txt"))
-  .then(data => fileRead("file2.txt"))
-  .then(data => fileWrite(data, "file3.txt"))
+fileRead('file1.txt')
+  .then(data => fileAppend(data, 'file2.txt'))
+  .then(data => fileRead('file2.txt'))
+  .then(data => fileWrite(data, 'file3.txt'))
   .catch(data => function(e) {
     console.log(e);
   });
