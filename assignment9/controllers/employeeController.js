@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'), 
-  employees = mongoose.model('employees');
+  employees = mongoose.model('employees')
+  project = mongoose.model('projects');
 
 exports.allEmployees = function(req, res){
   employees.find({}, {name : 1,username : 1,_id : 0},(err, result) => {
@@ -14,6 +15,34 @@ exports.allEmployees = function(req, res){
 
 exports.removeEmployee = function(req, res){
   var username = req.params.username;
+  var id = null;
+
+  var removeFromProject = employees.findOne({'username' : username}).exec(function(err,result){
+    if (err) return err
+    else {
+      return result;
+    }
+  })
+    .then(result => {id = result._id})
+    .then(result => project.update({'manager' : id},{'manager' : null},{multi : true}).exec(function(err,result){
+      if (err) console.log(err);
+      else {
+        console.log(result);
+      }
+    }))
+    .then(result => project.update({},{$pull :{'developers' : id}},{multi : true}).exec(function(err,result1){
+      if (err) console.log(err);
+      else {
+        console.log(result);
+      }
+    }))
+    .then(result => employee.update({'reportingTo' : id},{'reportingTo' : null},{multi : true}).exec(function(err,result){
+      if (err) console.log(err);
+      else {
+        console.log(result);
+      }
+    }));
+  
   employees.remove({'username' : username} , function(err , removed){
     if (err) throw(err);
     else {
