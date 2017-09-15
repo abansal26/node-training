@@ -1,0 +1,30 @@
+{
+  "name": "testing",
+  "version": "1.0.0",
+  "description": "testing using mocha and chai",
+  "main": "./test/test.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abansal26/test.git"
+  },
+  "keywords": [
+    "test",
+    "mocha"
+  ],
+  "author": "akshay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abansal26/test/issues"
+  },
+  "homepage": "https://github.com/abansal26/test#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3"
+  }
+}
