@@ -1,0 +1,27 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "testing mongodb",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abansal26/test.git"
+  },
+  "author": "akshay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abansal26/test/issues"
+  },
+  "homepage": "https://github.com/abansal26/test#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "mongodb": "^2.2.31",
+    "mongoose": "^4.11.10",
+    "mongoose-unique-validator": "^1.0.5",
+    "request": "^2.81.0"
+  }
+}
