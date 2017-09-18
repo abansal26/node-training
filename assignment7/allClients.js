@@ -1,18 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var requirePromise = require('request-promise');
+var config = require('./config.js');
 
 router.get('/', function(req, res) {
-  var url = 'https://api.createsend.com/api/v3.1/clients.json';
-  requirePromise
-    .get(url, {
-      auth: {
-        user: 'fc96dc9ded698bbfbfb975409a864a42',
-        pass: 'x'
-      }
-    })
-    .then((response) => {
+  var options = new config;
+  options.url = options.url + '.json';
+  requirePromise.get(options)
+    .then(function(response) {
       res.send(response);
+    })
+    .catch(function(err) {
+      res.send(err);
     });
 });
 
