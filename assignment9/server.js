@@ -1,9 +1,9 @@
 var express = require('express'),
-	app = express(),
-	mongoose = require('mongoose'),
-	employees = require('./models/employeeModel.js'),
-	project = require('./models/projectModel.js'),
-	bodyParser = require('body-parser');
+  app = express(),
+  mongoose = require('mongoose'),
+  employees = require('./models/employeeModel.js'),
+  project = require('./models/projectModel.js'),
+  bodyParser = require('body-parser');
 var employeeRoute = require('./routes/employeeRoutes.js');
 var projectRoute = require('./routes/projectsRoutes.js');
 
