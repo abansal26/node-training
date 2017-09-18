@@ -13,13 +13,13 @@ mongoose.connect('mongodb://localhost:27017/UHG');
 passport.use(new BearerStrategy(
 	function(token, done) {
 		console.log(token);
-    	user.findOne({'token': token }, function (err, user) {
-		    if (err) { return done(err); }
-		    if (!user) { return done(null, false);}
-		    console.log(user);
-		    return done(null, user, { scope: 'all' });
-	    });
-  	}
+  	user.findOne({'token': token }, function (err, user) {
+	    if (err) { return done(err); }
+	    if (!user) { return done(null, false);}
+	    console.log(user);
+	    return done(null, user, { scope: 'all' });
+    });
+  }
 ));
 
 app.use(bodyParser.json());
